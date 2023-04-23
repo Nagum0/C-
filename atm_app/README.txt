@@ -14,6 +14,11 @@ CODE STRUCTURE/DESIGN:
     1. Basic input/output system; - Done
     2. getUserData function. -> At the beginning of the code so that the file is always going to be read!
         map -> string key, vector value
+    3.Login function -> Asks for username(dataMap[key]) and then for PIN(dataMap[value][0])
+        It then inputs these into the User struct and after that it runs the checkLogin function. 
+        If username and PIN check out then user is allowed in.
+        If not user must exit or create a new account:
+            3.5 Register function -> Asks for name, generates 4 digit pin and asks for balance.
 
 DEV TOOLS:
     1. readVectorMap -> prints out all data from dataMap

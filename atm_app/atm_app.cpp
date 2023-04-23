@@ -16,20 +16,25 @@ struct User {
 
 /* Variables */
 std::map<std::string, std::vector<std::string>> dataMap;
-DevTools dev;
+User user;
+DevTools dev; //DevTools class
 
 /* Functions declarations */
 void getUserData(std::map<std::string, std::vector<std::string>> &argMap); //Input user data to data map
+void login(User &argUser); //login prompt
+bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser);
 
 /* Main function */
 int main() {
     //Read file and get user data
     getUserData(dataMap);
+    //Login prompt
+    login(user);
     //Command variable
     std::string cmd;
 
+    //Main input/output loop
     std::cout << "--------------ATM--------------" << "\n";
-
     do {
         std::cout << "$ ";
         std::getline(std::cin >> std::ws, cmd);
@@ -39,14 +44,16 @@ int main() {
         else { std::cout << "Command not recognized" << "\n"; continue; }
 
     } while (cmd != "!!");
-
-    
     std::cout << "-------------------------------" << "\n";
 
     return 0;
 }
 
 /* Functions */
+
+/*  getUserData function
+    * reads all the data from userData file and inputs into a map<string, vector<string>>
+*/
 void getUserData(std::map<std::string, std::vector<std::string>> &argMap) {
     std::string fileName = "C:\\Users\\csabe\\OneDrive\\Documents\\01 C++\\atm_app\\userData.txt";
     std::ifstream file(fileName);
@@ -67,4 +74,24 @@ void getUserData(std::map<std::string, std::vector<std::string>> &argMap) {
     }
 
     file.close();
+}
+
+/*  login prompt function 
+    * prompts login inputs
+    * name, PIN
+    * runs checkLogin function at the end
+*/
+void login(User &argUser) {
+    std::cout << "Username: ";
+    std::getline(std::cin >> std::ws, argUser.name);
+
+    std::cout << "PIN: ";
+    std::getline(std::cin >> std::ws, argUser.pin);
+}
+
+/*  checkLogin function 
+    * 
+*/
+bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser) {
+    return false;
 }

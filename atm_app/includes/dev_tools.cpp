@@ -14,3 +14,10 @@ void DevTools::readVectorMap(std::map<std::string, std::vector<std::string>> &ar
         std::cout << "\n";
     }
 }
+
+/*  checkDevAcc function
+    * checks if user is a admin(username starts with a_)
+*/
+bool DevTools::checkDevAcc(std::map<std::string, std::vector<std::string>> &argMap) {
+    return false;
+}
