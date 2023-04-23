@@ -18,7 +18,8 @@ CODE STRUCTURE/DESIGN:
         It then inputs these into the User struct and after that it runs the checkLogin function. 
         If username and PIN check out then user is allowed in.
         If not user must exit or create a new account:
-            3.5 Register function -> Asks for name, generates 4 digit pin and asks for balance.
+            3.5 Register function -> Asks for name, generates 4 digit pin and asks for balancea and writes it into the
+            userData.txt file.
 
 DEV TOOLS:
     1. readVectorMap -> prints out all data from dataMap
