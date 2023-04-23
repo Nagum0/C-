@@ -20,6 +20,7 @@ CODE STRUCTURE/DESIGN:
         If not user must exit or create a new account:
             3.5 Register function -> Asks for name, generates 4 digit pin and asks for balance and writes it into the
             userData.txt file using the saveSignUpData function;
+                saveSignUpData function -> opens userData.txt file and writes user.name user.pin and user balance to its end.
 
 DEV TOOLS:
     1. readVectorMap -> prints out all data from dataMap
