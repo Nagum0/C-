@@ -6,6 +6,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <thread>
 
 #include "includes/dev_tools.h"
 
@@ -151,6 +152,8 @@ void signUp(User &user) {
 
     std::cout << "Generating PIN..." << "\n";
     user.pin = genPin();
+    //Sleep for 1 second
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     std::cout << "New PIN: " << user.pin << "\n";
 }
 
