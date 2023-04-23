@@ -102,8 +102,14 @@ void login(User &argUser) {
     * prints logged in 
 */
 bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser) {
-    for (auto itr = argMap.begin(); itr != argMap.end(); itr++) {
-        std::cout << (*itr).first << "\n";
+    auto itr = argMap.find(user.name);
+
+    if (itr != argMap.end()) {
+        for (const auto& element : itr->second) {
+            std::cout << element << " ";
+        }
+
+        std::cout << "\n";
     }
 
     return false;
