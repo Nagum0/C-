@@ -12,5 +12,8 @@ APP FUNCTION:
 
 CODE STRUCTURE/DESIGN:
     1. Basic input/output system; - Done
-    2. Readfile function. -> At the beginning of the code so that the file is always going to be read!
+    2. getUserData function. -> At the beginning of the code so that the file is always going to be read!
         map -> string key, vector value
+
+DEV TOOLS:
+    1. readVectorMap -> prints out all data from dataMap

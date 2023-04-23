@@ -35,7 +35,7 @@ int main() {
         std::getline(std::cin >> std::ws, cmd);
 
         if (cmd == "!!" || cmd == "exit") { break; }
-        else if (cmd == "dev_tools") { dev.test(); continue; }
+        else if (cmd == "dev_show_all_users" || cmd == "d_s_a_u") { dev.readVectorMap(dataMap); continue; }
         else { std::cout << "Command not recognized" << "\n"; continue; }
 
     } while (cmd != "!!");
