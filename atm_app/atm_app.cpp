@@ -5,6 +5,8 @@
 #include <sstream>
 #include <string>
 
+#include "includes/dev_tools.h"
+
 /* User struct */
 struct User {   
     std::string name;
@@ -14,6 +16,7 @@ struct User {
 
 /* Variables */
 std::map<std::string, std::vector<std::string>> dataMap;
+DevTools dev;
 
 /* Functions declarations */
 void getUserData(std::map<std::string, std::vector<std::string>> &argMap); //Input user data to data map
@@ -22,7 +25,6 @@ void getUserData(std::map<std::string, std::vector<std::string>> &argMap); //Inp
 int main() {
     //Read file and get user data
     getUserData(dataMap);
-
     //Command variable
     std::string cmd;
 
@@ -33,6 +35,7 @@ int main() {
         std::getline(std::cin >> std::ws, cmd);
 
         if (cmd == "!!" || cmd == "exit") { break; }
+        else if (cmd == "dev_tools") { dev.test(); continue; }
         else { std::cout << "Command not recognized" << "\n"; continue; }
 
     } while (cmd != "!!");
