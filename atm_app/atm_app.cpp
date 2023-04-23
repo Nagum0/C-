@@ -28,8 +28,12 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
 int main() {
     //Read file and get user data
     getUserData(dataMap);
+
     //Login prompt
     login(user);
+    //Check login
+    checkLogin(dataMap, user);
+
     //Command variable
     std::string cmd;
 
@@ -90,8 +94,17 @@ void login(User &argUser) {
 }
 
 /*  checkLogin function 
-    * 
+    * goes into dataMap
+    * checks if user.name is a key
+        * if not returns false
+    * then checks if user.pin is the first element inside the value vector for the given key(user.name)
+        * if not returns false
+    * prints logged in 
 */
 bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser) {
+    for (auto itr = argMap.begin(); itr != argMap.end(); itr++) {
+        std::cout << (*itr).first << "\n";
+    }
+
     return false;
 }
