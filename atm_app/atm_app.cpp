@@ -4,6 +4,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 #include "includes/dev_tools.h"
 
@@ -22,7 +24,9 @@ DevTools dev; //DevTools class
 /* Functions declarations */
 void getUserData(std::map<std::string, std::vector<std::string>> &argMap); //Input user data to data map
 void login(User &argUser); //login prompt
-bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser);
+bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser); //Check login 
+void signUp(User &user); //Sign up function
+std::string genPin();
 
 /* Main function */
 int main() {
@@ -39,11 +43,24 @@ int main() {
         std::cout << "Logged in successfully!" << "\n";
     }
     else {
+		std::string tempCmd;
+
         std::cout << "Incorrect username or password!" << "\n";
+		std::cout << "Type `exit` or `sign_up` to continue: ";
+		std::getline(std::cin >> std::ws, tempCmd);
+
+		if (tempCmd == "exit") {
+            std::cout << "-------------------------------" << "\n";
+			return 1;
+		}
+		else if (tempCmd == "sign_up") {
+			
+		}
     }
 
     //Command variable
     std::string cmd;
+
     do {
         std::cout << "$ ";
         std::getline(std::cin >> std::ws, cmd);
@@ -110,8 +127,6 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
     auto itr = argMap.find(user.name);
 
     if (itr != argMap.end()) {
-        std::cout << (*itr).second[0] << "\n";
-
         if (user.pin == (*itr).second[0]) {
             return true;
         }
@@ -123,4 +138,25 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
         std::cout << "Incorrect username" << "\n";
         return false;
     }
+}
+
+/*  signUp function
+    * takes input for user.name
+    * generates 4 digit pin for user.pin using the `genPin` function
+    * takes input for user.balance
+*/
+void signUp(User &user) {
+    std::cout << "Username: ";
+    std::getline(std::cin >> std::ws, user.name);
+
+    std::cout << "Generating PIN..." << "\n";
+    user.pin = genPin();
+}
+
+/*  genPin function 
+    * generates 4 digit string PIN for user
+*/
+std::string genPin() {
+    //PIN
+    std::string PIN;
 }
