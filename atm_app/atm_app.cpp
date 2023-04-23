@@ -26,7 +26,7 @@ void getUserData(std::map<std::string, std::vector<std::string>> &argMap); //Inp
 void login(User &argUser); //login prompt
 bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser); //Check login 
 void signUp(User &user); //Sign up function
-std::string genPin();
+std::string genPin(); //Generate 4 digit PIN function
 
 /* Main function */
 int main() {
@@ -54,7 +54,7 @@ int main() {
 			return 1;
 		}
 		else if (tempCmd == "sign_up") {
-			
+			signUp(user);
 		}
     }
 
@@ -151,6 +151,7 @@ void signUp(User &user) {
 
     std::cout << "Generating PIN..." << "\n";
     user.pin = genPin();
+    std::cout << "New PIN: " << user.pin << "\n";
 }
 
 /*  genPin function 
@@ -159,4 +160,18 @@ void signUp(User &user) {
 std::string genPin() {
     //PIN
     std::string PIN;
+
+    //Seeding the random number generator
+    std::srand(std::time(nullptr));
+
+    //Gen random number between 0 and 9999
+    int randNum = std::rand() % 10000;
+
+    //Turning randNum into string and adding 0-s to its end until it is 4 digits long
+    PIN = std::to_string(randNum);
+    while (PIN.length() < 4) {
+        PIN = "0" + PIN;
+    } 
+
+    return PIN;
 }
