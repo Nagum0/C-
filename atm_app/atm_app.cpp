@@ -29,16 +29,21 @@ int main() {
     //Read file and get user data
     getUserData(dataMap);
 
+    //Main input/output loop
+    std::cout << "--------------ATM--------------" << "\n";
+
     //Login prompt
     login(user);
     //Check login
-    checkLogin(dataMap, user);
+    if (checkLogin(dataMap, user)) {
+        std::cout << "Logged in successfully!" << "\n";
+    }
+    else {
+        std::cout << "Incorrect username or password!" << "\n";
+    }
 
     //Command variable
     std::string cmd;
-
-    //Main input/output loop
-    std::cout << "--------------ATM--------------" << "\n";
     do {
         std::cout << "$ ";
         std::getline(std::cin >> std::ws, cmd);
@@ -48,8 +53,8 @@ int main() {
         else { std::cout << "Command not recognized" << "\n"; continue; }
 
     } while (cmd != "!!");
-    std::cout << "-------------------------------" << "\n";
 
+    std::cout << "-------------------------------" << "\n";
     return 0;
 }
 
@@ -105,12 +110,17 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
     auto itr = argMap.find(user.name);
 
     if (itr != argMap.end()) {
-        for (const auto& element : itr->second) {
-            std::cout << element << " ";
+        std::cout << (*itr).second[0] << "\n";
+
+        if (user.pin == (*itr).second[0]) {
+            return true;
         }
-
-        std::cout << "\n";
+        else {
+            return false;
+        }
     }
-
-    return false;
+    else {
+        std::cout << "Incorrect username" << "\n";
+        return false;
+    }
 }
