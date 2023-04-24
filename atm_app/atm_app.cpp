@@ -28,6 +28,7 @@ void login(User &argUser); //login prompt
 bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser); //Check login 
 void signUp(User &user); //Sign up function
 std::string genPin(); //Generate 4 digit PIN function
+void saveSignUpData(); //Saves sign up data to userData.txt file
 
 /* Main function */
 int main() {
@@ -155,6 +156,9 @@ void signUp(User &user) {
     //Sleep for 1 second
     std::this_thread::sleep_for(std::chrono::seconds(1));
     std::cout << "New PIN: " << user.pin << "\n";
+
+    std::cout << "Account balance: ";
+    std::cin >> std::ws >> user.balance;
 }
 
 /*  genPin function 
@@ -177,4 +181,12 @@ std::string genPin() {
     } 
 
     return PIN;
+}
+
+/*  saveSignUpData function
+    * opens userData.txt file
+    * writes user.name user.pin and user.balance in this order to the end of the file
+*/
+void saveSignUpData() {
+
 }
