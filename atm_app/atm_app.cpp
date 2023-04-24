@@ -160,7 +160,22 @@ void signUp(User &user) {
     std::cout << "Account balance: ";
     std::cin >> std::ws >> user.balance;
 
-    saveSignUpData(user);
+    //Confirmation
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::cout << "Your account info: " << user.name << " " << user.pin << "\n";
+    std::cout << "Confirm (Y/N): ";
+    std::string confirm;
+    std::cin >> std::ws >> confirm;
+
+    if (confirm == "Y" || confirm == "yes" || confirm == "Yes" || confirm == "YES") {
+        saveSignUpData(user);
+        std::cout << "Account registered!" << "\n";
+    }
+    else {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "Retry..." << "\n";
+        signUp(user);
+    }
 }
 
 /*  genPin function 
