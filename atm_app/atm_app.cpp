@@ -28,7 +28,7 @@ void login(User &argUser); //login prompt
 bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &argUser); //Check login 
 void signUp(User &user); //Sign up function
 std::string genPin(); //Generate 4 digit PIN function
-void saveSignUpData(); //Saves sign up data to userData.txt file
+void saveSignUpData(User &user); //Saves sign up data to userData.txt file
 
 /* Main function */
 int main() {
@@ -159,6 +159,8 @@ void signUp(User &user) {
 
     std::cout << "Account balance: ";
     std::cin >> std::ws >> user.balance;
+
+    saveSignUpData(user);
 }
 
 /*  genPin function 
@@ -187,6 +189,17 @@ std::string genPin() {
     * opens userData.txt file
     * writes user.name user.pin and user.balance in this order to the end of the file
 */
-void saveSignUpData() {
+void saveSignUpData(User &user) {
+    std::string fileName = "C:\\Users\\csabe\\OneDrive\\Documents\\01 C++\\atm_app\\userData.txt";
+    
+    //Opening file in append mode
+    std::ofstream file(fileName, std::ios_base::app);
 
+    if (!file.is_open()) {
+        std::cerr << "An error occured..." << "\n";
+    }
+
+    file << user.name << " " << user.pin << " " << user.balance << "$" << "\n";
+
+    file.close();
 }
