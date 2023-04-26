@@ -29,15 +29,15 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
 void signUp(User &user); //Sign up function
 std::string genPin(); //Generate 4 digit PIN function
 void saveSignUpData(User &user); //Saves sign up data to userData.txt file
+void showPersonalInfo(User user); //Shows personal info
 
 /* Main function */
 int main() {
     //Read file and get user data
     getUserData(dataMap);
-
-    //Main input/output loop
     std::cout << "--------------ATM--------------" << "\n";
 
+    /* Login */
     //Login prompt
     login(user);
     //Check login
@@ -63,11 +63,15 @@ int main() {
     //Command variable
     std::string cmd;
 
+    /* Mainloop */
     do {
         std::cout << "$ ";
         std::getline(std::cin >> std::ws, cmd);
 
         if (cmd == "!!" || cmd == "exit") { break; }
+        //User tools
+        else if (cmd == "info" || cmd == "person" || cmd == "user") { continue; }
+        //Developer tools
         else if (cmd == "dev_show_all_users" || cmd == "d_s_a_u") { dev.readVectorMap(dataMap); continue; }
         else { std::cout << "Command not recognized" << "\n"; continue; }
 
@@ -217,4 +221,15 @@ void saveSignUpData(User &user) {
     file << user.name << " " << user.pin << " " << user.balance << "$" << "\n";
 
     file.close();
+}
+
+/*  showPersonalInfo
+    * prints personal user info to the screen if entered PIN = user.pin
+*/
+void showPersonalInfo(User user) {
+    std::string tempPin;
+
+    std::cout << "\n" << "Enter PIN: ";
+    std::cin >> std::ws >> tempPin;
+    
 }
