@@ -23,9 +23,16 @@ CODE STRUCTURE/DESIGN:
                 saveSignUpData function -> opens userData.txt file and writes user.name user.pin and user balance to its end.
     4. Mainloop
     5. functions:
-        showPersonalInfo function -> asks for users PIN
-            if PIN is correct than the program prints out the personal info
-            if not it throws an error
+        5.1 showPersonalInfo function -> asks for users PIN
+                if PIN is correct than the program prints out the personal info
+                if not it throws an error
+
+        5.2 withdraw function -> asks for user's PIN, asks for withdraw amount 
+                if withdraw amount > user.balance: throw err
+                else goes into userData.txt file and searches for the user.name and deletes that line using the dev tools
+                `deleteLine` function, 
+
 
 DEV TOOLS:
     1. readVectorMap -> prints out all data from dataMap
+    2. deleteLine -> 
