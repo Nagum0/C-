@@ -14,7 +14,7 @@
 struct User {   
     std::string name;
     std::string pin;
-    int balance;
+    std::string balance;
 };
 
 /* Variables */
@@ -134,6 +134,7 @@ bool checkLogin(std::map<std::string, std::vector<std::string>> &argMap, User &a
 
     if (itr != argMap.end()) {
         if (user.pin == (*itr).second[0]) {
+            user.balance = (*itr).second[1]; //Assign user.balance value
             return true;
         }
         else {
