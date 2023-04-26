@@ -70,7 +70,7 @@ int main() {
 
         if (cmd == "!!" || cmd == "exit") { break; }
         //User tools
-        else if (cmd == "info" || cmd == "person" || cmd == "user") { continue; }
+        else if (cmd == "info" || cmd == "person" || cmd == "user") { showPersonalInfo(user); continue; }
         //Developer tools
         else if (cmd == "dev_show_all_users" || cmd == "d_s_a_u") { dev.readVectorMap(dataMap); continue; }
         else { std::cout << "Command not recognized" << "\n"; continue; }
@@ -231,5 +231,12 @@ void showPersonalInfo(User user) {
 
     std::cout << "\n" << "Enter PIN: ";
     std::cin >> std::ws >> tempPin;
-    
+
+    if (tempPin == user.pin) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "Name: " << user.name << " PIN: " << user.pin << " Balance: " << user.balance << "\n" << "\n";
+    }
+    else {
+        std::cerr << "Incorrect PIN!" << "\n" << "\n";
+    }
 }
