@@ -9,6 +9,7 @@ class DevTools {
     public:
         bool checkDevAcc(std::map<std::string, std::vector<std::string>> &argMap);
         void readVectorMap(std::map<std::string, std::vector<std::string>> &argMap);
+        void alterLine(std::string fileName, std::string findValue);
 };
 
 #endif

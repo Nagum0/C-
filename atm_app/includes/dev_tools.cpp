@@ -1,4 +1,8 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdio>
+
 #include "dev_tools.h"
 
 /*  Read dataMap in atm_app.cpp file
@@ -20,4 +24,22 @@ void DevTools::readVectorMap(std::map<std::string, std::vector<std::string>> &ar
 */
 bool DevTools::checkDevAcc(std::map<std::string, std::vector<std::string>> &argMap) {
     return false;
+}
+
+/*  alterLine function
+    * finds 
+*/
+void DevTools::alterLine(std::string fileName, std::string findValue) {
+    //Input file
+    std::fstream file(fileName);
+    //Output file
+    std::ofstream outputFile("C:\\Users\\csabe\\OneDrive\\Documents\\01 C++\\tests\\outputData.txt");
+
+    std::string line;
+
+    while (std::getline(file, line)) {
+        if (line.find(findValue) != std::string::npos) { continue; }
+        outputFile << line << "\n";
+    }
+
 }

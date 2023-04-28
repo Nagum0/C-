@@ -30,6 +30,7 @@ void signUp(User &user); //Sign up function
 std::string genPin(); //Generate 4 digit PIN function
 void saveSignUpData(User &user); //Saves sign up data to userData.txt file
 void showPersonalInfo(User user); //Shows personal info
+void withdrawFromBalance(User &user); //Withdraw money function
 
 /* Main function */
 int main() {
@@ -240,4 +241,11 @@ void showPersonalInfo(User user) {
     else {
         std::cerr << "Incorrect PIN!" << "\n" << "\n";
     }
+}
+
+/*  withdrawFromBalance function
+    *
+*/
+void withdrawFromBalance(User &user) {
+
 }
