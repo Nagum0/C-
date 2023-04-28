@@ -1,5 +1,7 @@
 APP FUNCTION:
     Console based ATM app;
+    userData.txt file system:
+        name, PIN, balance
 
     Features:
         login;

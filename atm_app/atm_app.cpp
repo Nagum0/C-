@@ -219,7 +219,7 @@ void saveSignUpData(User &user) {
         std::cerr << "An error occured..." << "\n";
     }
 
-    file << user.name << " " << user.pin << " " << user.balance << "$" << "\n";
+    file << user.name << " " << user.pin << " " << user.balance << "\n";
 
     file.close();
 }
@@ -235,7 +235,7 @@ void showPersonalInfo(User user) {
 
     if (tempPin == user.pin) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::cout << "Name: " << user.name << " PIN: " << user.pin << " Balance: " << user.balance << "\n" << "\n";
+        std::cout << "Name: " << user.name << " PIN: " << user.pin << " Balance: " << user.balance << "$" << "\n" << "\n";
     }
     else {
         std::cerr << "Incorrect PIN!" << "\n" << "\n";
