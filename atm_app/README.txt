@@ -31,12 +31,11 @@ CODE STRUCTURE/DESIGN:
 
         5.2 withdraw function -> asks for user's PIN, asks for withdraw amount 
                 if withdraw amount > user.balance: throw err
-                else goes into userData.txt file and searches for the user.name and deletes that line using the dev tools
-                `deleteLine` function, 
-
+                else goes into userData.txt file and searches for the user.name and then does everything else with the help
+                of the `alterLine` function(read below).
 
 DEV TOOLS:
     1. readVectorMap -> prints out all data from dataMap
-    2. deleteLine -> Opens userData.txt as an inputFile and creates an separate output file. Then it goes through the file
+    2. alterLine -> Opens userData.txt as an inputFile and creates an separate output file. Then it goes through the file
                      if it finds the user.name it skips that line otherwise it writes everything over to the output file.
                      Then it writes the altered line to the end of the output file and renames it to userData.txt.
